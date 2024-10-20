@@ -8,6 +8,7 @@ import pandas as pd
 import spacy
 import nltk
 from nltk.corpus import stopwords
+from nltk.probability import FreqDist
 import os
 
 nltk.download('stopwords')
@@ -55,7 +56,7 @@ for archivo in os.listdir(info_path):
                 palabras_lemas.append(lema)
 
         # Contar la frecuencia de cada palabra
-        frecuencia_palabras = Counter(palabras_lemas)
+        frecuencia_palabras = FreqDist(palabras_lemas)
 
         # Convertir el contador a un DataFrame
         df_frecuencias = pd.DataFrame(frecuencia_palabras.items(), columns=[
